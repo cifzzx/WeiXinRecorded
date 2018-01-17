@@ -477,7 +477,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         sb.append(" -i");
         sb.append(" /storage/emulated/0/timg.gif");
         sb.append(" -filter_complex");
-        sb.append(" overlay=0:0");
+        sb.append(" overlay=(main_w-overlay_w)/2:(main_h-overlay_h)*0.85");
         sb.append(" -vcodec libx264 -profile:v baseline -preset ultrafast -b:v 3000k -g 25");
         sb.append(" -f mp4");
         sb.append(" "+finishVideo);
@@ -542,7 +542,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
                     protected void onPostExecute(String result) {
                         closeProgressDialog();
                         if(!TextUtils.isEmpty(result)) {
-                            Intent intent = new Intent(EditVideoActivity.this, VideoPlayActivity.class);
+                            Intent intent = new Intent(EditVideoActivity.this, ASDFActivity.class);
                             intent.putExtra("path", result);
                             startActivity(intent);
                         }

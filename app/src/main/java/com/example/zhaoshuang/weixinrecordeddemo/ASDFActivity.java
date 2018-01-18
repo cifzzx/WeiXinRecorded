@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ant.liao.GifDecoder;
 import com.yixia.camera.util.Log;
 
 import cn.dxjia.ffmpeg.library.FFmpegNativeHelper;
@@ -29,16 +30,15 @@ public class ASDFActivity extends AppCompatActivity {
     private static ProgressDialog mWaitingDialog;
     private WaitingDialogHanlder mWaitingDialogHandler;
 
-    private String testCommand = "ffmpeg -i /sdcard/demo.mp4 -vframes 30 -y -f gif /sdcard/demoout.gif";
+    private String testCommand;
 //    private static final String testCommand = "ffmpeg -h";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asdf);
-
         String path = getIntent().getStringExtra("path");
-        if(path != ""){
+        if(!path.isEmpty()){
             testCommand = "ffmpeg -i "+ path +" -vframes 40 -y -f gif /sdcard/demoout.gif";
             Log.e("ffmpegpath",testCommand);
         }else{
